@@ -51,3 +51,5 @@ export default class Enemy extends UnitBase {
         context.stroke() ;
     }
 }
+
+// EnemyEnemyEnemyEnemyEnemy
