@@ -20,15 +20,34 @@ export default class Player extends UnitBase {
      */
     update () {
         // 矢印キー　←↑→↓で動くようにしてください。googleで「js keycode」など検索してみて下さい。
+        this.addEventListener('keydown', move);
+
+        function move(e) {
+            const key_code = e.keycode;
+            if( key_code === 37) x -= 20;
+            if( key_code === 38) y -= 20;
+            if( key_code === 39) y += 20;
+            if( key_code === 40) y += 20;
+        }
 
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
+
+        // this.addEventListener('keydown', throwBullet);
+
+        // function throwBullet(e) {
+        //     const key_code = e.keycode;
+        //     if( key_code === 32) {
+                
+        //     }
+        // }
+
 
         // 敵の弾に当たったらダメージを受けるようにして下さい。
         const bullet = HitTest.getHitObjectByClassName(this, "Bullet");
         if(bullet) {
             // ダメージを与えて下さい。↓コメントアウトを外していただくですがw
-            // this.setDamage (bullet.damage);
+            this.setDamage (bullet.damage);
             // ↑さて、setDamageはどこで定義されているでしょうか？
 
             // HPが0になったら死亡状態にし、MainManageに通知して下さい。

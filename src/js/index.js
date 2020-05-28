@@ -19,4 +19,3 @@ EnterFrame.startAnimationFrame (canvas);
  * entory js　特にこれをいじる必要はありません。
  */
 
-// ERERERER

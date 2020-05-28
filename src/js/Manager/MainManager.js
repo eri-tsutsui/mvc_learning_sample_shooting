@@ -24,6 +24,7 @@ export default class MainManager {
 
         //UIを表示させて下さい。UIクラスをインスタンス化させます。
         //はViewフォルダにあります
+        this.ui = new UI (); 
 
     }
 }
