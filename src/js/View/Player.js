@@ -33,14 +33,12 @@ export default class Player extends UnitBase {
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
 
-        // this.addEventListener('keydown', throwBullet);
+        this.addEventListener('keydown', throwBullet);
 
-        // function throwBullet(e) {
-        //     const key_code = e.keycode;
-        //     if( key_code === 32) {
-                
-        //     }
-        // }
+        function throwBullet(e) {
+            const bullet = new Bullet (this.x + 10, this.y);
+            bullet.setSpeed(-4);
+        }
 
 
         // 敵の弾に当たったらダメージを受けるようにして下さい。
