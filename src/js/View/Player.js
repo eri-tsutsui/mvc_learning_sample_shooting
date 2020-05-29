@@ -10,55 +10,48 @@ export default class Player extends UnitBase {
         super ();
         this.x = 100;
         this.y = 200;
+        this.moveSpeed = 5;
+        this.isLeft = false;
+        this.isRight = false;
+        this.isUp = false;
+        this.isDown = false;
         this.setHP(100);
         this.setWidth(40);
         this.setHeight(40);
 
         // 矢印キー操作
-        window.addEventListener('keydown', (e) => {
-            this.move (e);
-        });
-
-        window.addEventListener('keyup', (e) => {
-            return;
-        });
+        window.addEventListener('keyup', (e) => this.keyup(e));
+        window.addEventListener('keydown', (e) => this.keydown(e));
 
         // Bullet発射
-        window.addEventListener('keydown', (e) => {
-            this.throwBullet (e);
-        });
+        // window.addEventListener('keydown', (e) => {
+        //     this.throwBullet (e);
+        // });
 
     }
 
-    move (e) {
-        console.log(this.x, e.keyCode)
+    keyup (e) {
         const key_code = e.keyCode;
-        if( key_code === 37) this.x -= 20;
-        if( key_code === 38) this.y -= 20;
-        if( key_code === 39) this.x += 20;
-        if( key_code === 40) this.y += 20;
-        // switch (e.keycode) {
-        //     case 37 :
-        //         this.x -= 20;
-        //         break;
-        //     case 38 :
-        //         this.y -= 20;
-        //         break;
-        //     case 39 :
-        //         this.x += 20;
-        //         break;
-        //     case 40 :
-        //         this.y += 20;
-        //         break;
-        // }
+        if (key_code === 37) this.isLeft = false;
+        if (key_code === 38) this.isUp = false;
+        if (key_code === 39) this.isRight = false;
+        if (key_code === 40) this.isDown = false;
     }
 
-    throwBullet (e) {
-        if(e.keyCode === 32) {
-            const bullet = new Bullet (this.x + 10, this.y);
-            bullet.setSpeed(-4);
-        }
+    keydown (e) {
+        const key_code = e.keyCode;
+        if (key_code === 37) this.isLeft = true;
+        if (key_code === 38) this.isUp = true;
+        if (key_code === 39) this.isRight = true;
+        if (key_code === 40) this.isDown = true;
     }
+
+    // throwBullet (e) {
+    //     if(e.keyCode === 32) {
+    //         const bullet = new Bullet (this.x + 10, this.y);
+    //         bullet.setSpeed(-4);
+    //     }
+    // }
     
     /**
      * EnterFrame.jsの中で
@@ -66,6 +59,11 @@ export default class Player extends UnitBase {
      */
     update () {
         // 矢印キー　←↑→↓で動くようにしてください。googleで「js keycode」など検索してみて下さい。
+
+        if (this.isLeft) this.x -= this.moveSpeed;
+        if (this.isRight) this.x += this.moveSpeed;
+        if (this.isUp) this.y -= this.moveSpeed;
+        if (this.isDown) this.y += this.moveSpeed;
 
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。

@@ -6,8 +6,8 @@ document.body.appendChild(canvas);
 
 // Canvasを画面いっぱいに表示する
 function onResize() {
-    canvas.width = innerWidth * devicePixelRatio;
-    canvas.height = innerHeight * devicePixelRatio;
+    canvas.width = innerWidth * devicePixelRatio -100;
+    canvas.height = innerHeight * devicePixelRatio -100;
 }
 window.addEventListener('resize', onResize);
 onResize();
