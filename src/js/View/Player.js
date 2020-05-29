@@ -5,6 +5,7 @@ import HitTest from "js/Util/HitTest";
  * 自機クラス
  */
 export default class Player extends UnitBase {
+
     constructor () {
         super ();
         this.x = 100;
@@ -12,6 +13,51 @@ export default class Player extends UnitBase {
         this.setHP(100);
         this.setWidth(40);
         this.setHeight(40);
+
+        // 矢印キー操作
+        window.addEventListener('keydown', (e) => {
+            this.move (e);
+        });
+
+        window.addEventListener('keyup', (e) => {
+            return;
+        });
+
+        // Bullet発射
+        window.addEventListener('keydown', (e) => {
+            this.throwBullet (e);
+        });
+
+    }
+
+    move (e) {
+        console.log(this.x, e.keyCode)
+        const key_code = e.keyCode;
+        if( key_code === 37) this.x -= 20;
+        if( key_code === 38) this.y -= 20;
+        if( key_code === 39) this.x += 20;
+        if( key_code === 40) this.y += 20;
+        // switch (e.keycode) {
+        //     case 37 :
+        //         this.x -= 20;
+        //         break;
+        //     case 38 :
+        //         this.y -= 20;
+        //         break;
+        //     case 39 :
+        //         this.x += 20;
+        //         break;
+        //     case 40 :
+        //         this.y += 20;
+        //         break;
+        // }
+    }
+
+    throwBullet (e) {
+        if(e.keyCode === 32) {
+            const bullet = new Bullet (this.x + 10, this.y);
+            bullet.setSpeed(-4);
+        }
     }
     
     /**
@@ -20,26 +66,9 @@ export default class Player extends UnitBase {
      */
     update () {
         // 矢印キー　←↑→↓で動くようにしてください。googleで「js keycode」など検索してみて下さい。
-        this.addEventListener('keydown', move);
-
-        function move(e) {
-            const key_code = e.keycode;
-            if( key_code === 37) x -= 20;
-            if( key_code === 38) y -= 20;
-            if( key_code === 39) y += 20;
-            if( key_code === 40) y += 20;
-        }
 
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
-
-        this.addEventListener('keydown', throwBullet);
-
-        function throwBullet(e) {
-            const bullet = new Bullet (this.x + 10, this.y);
-            bullet.setSpeed(-4);
-        }
-
 
         // 敵の弾に当たったらダメージを受けるようにして下さい。
         const bullet = HitTest.getHitObjectByClassName(this, "Bullet");
