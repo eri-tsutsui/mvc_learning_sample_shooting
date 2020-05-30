@@ -1,5 +1,6 @@
 import UnitBase from "js/View/UnitBase";
 import HitTest from "js/Util/HitTest";
+import Bullet from "js/View/Bullet";
 
 /**
  * 自機クラス
@@ -70,7 +71,7 @@ export default class Player extends UnitBase {
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
 
-        if (this.throwBullet) {
+        if (this.throwBullet === true) {
             const bullet = new Bullet (this.x + 10, this.y);
             bullet.setSpeed(7);
         }
