@@ -72,10 +72,11 @@ export default class Player extends UnitBase {
         // Enemyクラスを参考にしてください。
 
         if (this.throwBullet === true) {
-            const bullet = new Bullet (this.x + 10, this.y);
+            const bullet = new Bullet (this.x + 50, this.y);
             bullet.setSpeed(7);
+            this.throwBullet =false;
         }
-
+ 
         // 敵の弾に当たったらダメージを受けるようにして下さい。
         const bullet = HitTest.getHitObjectByClassName(this, "Bullet");
         if(bullet) {
