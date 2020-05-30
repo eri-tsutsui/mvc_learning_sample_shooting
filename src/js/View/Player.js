@@ -15,43 +15,45 @@ export default class Player extends UnitBase {
         this.isRight = false;
         this.isUp = false;
         this.isDown = false;
+        this.throwBullet = false;
         this.setHP(100);
         this.setWidth(40);
         this.setHeight(40);
 
-        // 矢印キー操作
+        // キー操作
         window.addEventListener('keyup', (e) => this.keyup(e));
         window.addEventListener('keydown', (e) => this.keydown(e));
-
-        // Bullet発射
-        // window.addEventListener('keydown', (e) => {
-        //     this.throwBullet (e);
-        // });
 
     }
 
     keyup (e) {
+
+        //矢印キー操作
         const key_code = e.keyCode;
         if (key_code === 37) this.isLeft = false;
         if (key_code === 38) this.isUp = false;
         if (key_code === 39) this.isRight = false;
         if (key_code === 40) this.isDown = false;
+
+        //スペースキー操作（弾丸）
+       if (key_code === 32) this.throwBullet = false;
+
     }
 
     keydown (e) {
+
+        //矢印キー操作
         const key_code = e.keyCode;
         if (key_code === 37) this.isLeft = true;
         if (key_code === 38) this.isUp = true;
         if (key_code === 39) this.isRight = true;
         if (key_code === 40) this.isDown = true;
+
+        //スペースキー操作（弾丸）
+        if (key_code === 32) this.throwBullet = true;
+
     }
 
-    // throwBullet (e) {
-    //     if(e.keyCode === 32) {
-    //         const bullet = new Bullet (this.x + 10, this.y);
-    //         bullet.setSpeed(-4);
-    //     }
-    // }
     
     /**
      * EnterFrame.jsの中で
@@ -67,6 +69,11 @@ export default class Player extends UnitBase {
 
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
+
+        if (this.throwBullet) {
+            const bullet = new Bullet (this.x + 10, this.y);
+            bullet.setSpeed(7);
+        }
 
         // 敵の弾に当たったらダメージを受けるようにして下さい。
         const bullet = HitTest.getHitObjectByClassName(this, "Bullet");

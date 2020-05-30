@@ -23,7 +23,7 @@ export default class Enemy extends UnitBase {
      * EnterFrame.jsの中で
      * requestAnimationFrameから自動的にcallされ続けます。
      */
-    update (){
+    update (){   
         // 動きはoverrideして下さい。↓のサンプルは上下運動
         this.deg = this.deg || 0;
         this.y = Math.cos(this.deg * (Math.PI / 180)) * 3 + this.y;
