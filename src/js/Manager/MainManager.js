@@ -18,9 +18,10 @@ export default class MainManager {
         this.player = new Player ();
 
         //死亡した時
-        player.addEventListener('currentHP', () => {
-            player.width = 0;
-            player.height = 0;
+        this.player.addEventListener('currentHP', () => {
+            console.log('死亡');
+            this.player.width = 0;
+            this.player.height = 0;
         });
 
         //敵のマネージャークラスです
