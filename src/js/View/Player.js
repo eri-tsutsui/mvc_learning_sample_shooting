@@ -1,6 +1,6 @@
 import UnitBase from "js/View/UnitBase";
 import HitTest from "js/Util/HitTest";
-import Bullet from "js/View/Bullet";
+import Bullet from "js/View/Bullet"; // bulletをnewするために事前にimport
 
 /**
  * 自機クラス
@@ -86,8 +86,13 @@ export default class Player extends UnitBase {
 
             // HPが0になったら死亡状態にし、MainManageに通知して下さい。
             // そして、MainManager側に、その通知を受け取れるようにして下さい。
-            // console.log (this.HP);
+            if (this.HP === 0) {
+                this.dispatchEvent(new Event('currentHP'));
+            }
+            console.log (this.HP);
         }
+
+
     }
 
     /**

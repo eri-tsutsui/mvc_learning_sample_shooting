@@ -17,6 +17,12 @@ export default class MainManager {
         //するようにしてください。
         this.player = new Player ();
 
+        //死亡した時
+        player.addEventListener('currentHP', () => {
+            player.width = 0;
+            player.height = 0;
+        });
+
         //敵のマネージャークラスです
         //EnemyManagerクラスにて課題を確認し、色々な敵を作ったり、
         //制御してください。
