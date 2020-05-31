@@ -11,6 +11,7 @@ export default class UI extends CommonBase {
     constructor () {
         super ();
         this.score = 0;
+        this.isGameOver = false;
     }
 
     /**
@@ -25,16 +26,23 @@ export default class UI extends CommonBase {
      * @param {Number} value 
      */
     showGameOver () {
-        // this.score = value;
+        this.isGameOver = true;
     }
     /**
      * 描画
      * @param {context} context 
      */
     draw (context) {
+
+        //SCOREの表示
         context.fillStyle = "rgb(255, 169, 0)";
         context.fillText("SCORE : " + this.score, 10, 10);
-        context.fillStyle = "rgb(0, 0, 0)";
-        context.fillText("GAME OVER", 10, 30);
+
+        //GAME OVERの表示
+        if(isGameOver === true) {
+            context.fillStyle = "rgb(0, 0, 0)";
+            context.fillText("GAME OVER", 10, 30);
+        }
+
     }
 }
