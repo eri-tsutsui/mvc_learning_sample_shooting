@@ -20,7 +20,7 @@ export default class MainManager {
         //死亡した時
         this.player.addEventListener('currentHP', () => {
             // console.log('死亡');
-            this.player.showGameOver();
+            this.ui.showGameOver();
         });
 
         //敵のマネージャークラスです
