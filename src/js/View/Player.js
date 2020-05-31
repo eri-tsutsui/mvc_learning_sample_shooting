@@ -55,7 +55,10 @@ export default class Player extends UnitBase {
 
     }
 
-    
+    death () {
+        this.delete;
+    }
+
     /**
      * EnterFrame.jsの中で
      * requestAnimationFrameから自動的にcallされ続けます。
@@ -87,12 +90,11 @@ export default class Player extends UnitBase {
             // HPが0になったら死亡状態にし、MainManageに通知して下さい。
             // そして、MainManager側に、その通知を受け取れるようにして下さい。
             if (this.HP === 0) {
+                this.death();
                 this.dispatchEvent(new Event('currentHP'));
             }
-            console.log (this.HP);
+           
         }
-
-
     }
 
     /**
