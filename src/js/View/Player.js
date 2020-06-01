@@ -56,7 +56,7 @@ export default class Player extends UnitBase {
     }
 
     death () {
-        this.destroy;
+        this.destroy();
     }
 
     /**

@@ -39,7 +39,7 @@ export default class UI extends CommonBase {
         context.fillText("SCORE : " + this.score, 10, 10);
 
         //GAME OVERの表示
-        if(isGameOver === true) {
+        if(this.isGameOver === true) {
             context.fillStyle = "rgb(0, 0, 0)";
             context.fillText("GAME OVER", 10, 30);
         }
