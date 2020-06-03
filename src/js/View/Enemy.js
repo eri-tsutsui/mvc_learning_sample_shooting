@@ -14,8 +14,8 @@ export default class Enemy extends UnitBase {
         this.setHP(5);
         this.setWidth(40);
         this.setHeight(40);
-        this.crashScore = 10;
-        setInterval(() => {
+        this.crashScore = 10;  
+        const id = setInterval(() => {
             // 一定間隔で弾を発射
             const bullet = new Bullet (this.x - 40, this.y);
             bullet.setSpeed(-4);
@@ -40,13 +40,19 @@ export default class Enemy extends UnitBase {
             if(this.HP <= 0) {
                 this.dispatchEvent(new Event('death'));
                 this.disappear();
+                this.bullet.stopBullet();
             }
 
-        }
+        }    
     }
 
     disappear() {
-        this.destroy();
+        this.destroy();                    
+    }
+
+    stopBullet() {
+        this.bullet.clearInterval(id);
+        this.bullet.destroy();
     }
     
 
