@@ -18,7 +18,7 @@ export default class Player extends UnitBase {
         this.isDown = false;
         this.throwBullet = false;
         this.setHP(100);
-        this.setWidth(40);
+        this.setWidth(40); //当たり判定のエリア
         this.setHeight(40);
 
         // キー操作
