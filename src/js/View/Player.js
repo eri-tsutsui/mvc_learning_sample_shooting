@@ -24,7 +24,6 @@ export default class Player extends UnitBase {
         // キー操作
         window.addEventListener('keyup', (e) => this.keyup(e));
         window.addEventListener('keydown', (e) => this.keydown(e));
-
     }
 
     keyup (e) {

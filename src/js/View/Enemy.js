@@ -40,22 +40,21 @@ export default class Enemy extends UnitBase {
             if(this.HP <= 0) {
                 this.dispatchEvent(new Event('death'));
                 this.disappear();
-                this.bullet.stopBullet();
+                this.stopBullet();
             }
 
         }    
-    }
+    } 
 
     disappear() {
         this.destroy();                    
     }
 
     stopBullet() {
-        this.bullet.clearInterval(this.nId);
+        clearInterval(this.nId);
         this.bullet.death();
     }
     
-
     /**
      * 描画
      * @param {context} context 
