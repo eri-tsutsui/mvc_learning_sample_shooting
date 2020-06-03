@@ -52,7 +52,7 @@ export default class Enemy extends UnitBase {
 
     stopBullet() {
         this.bullet.clearInterval(id);
-        this.bullet.destroy();
+        this.bullet.death();
     }
     
 

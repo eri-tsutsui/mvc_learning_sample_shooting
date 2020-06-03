@@ -56,9 +56,9 @@ export default class Bullet extends CommonBase {
     }
 
     // bullet消す処理
-    // death() {
-    //     this.destroy;
-    // }
+    death() {
+        this.destroy();
+    }
 
     /**
      * 弾の描画
