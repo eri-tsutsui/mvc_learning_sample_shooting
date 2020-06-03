@@ -12,10 +12,12 @@ export default class Enemy extends UnitBase {
         this.x = 400;
         this.y = 200;
         this.setHP(5);
+        this.setWidth(40);
+        this.setHeight(40);
         this.crashScore = 10;
         setInterval(() => {
             // 一定間隔で弾を発射
-            const bullet = new Bullet (this.x - 10, this.y);
+            const bullet = new Bullet (this.x - 40, this.y);
             bullet.setSpeed(-4);
         }, 400)
     }
@@ -29,21 +31,21 @@ export default class Enemy extends UnitBase {
         this.y = Math.cos(this.deg * (Math.PI / 180)) * 3 + this.y;
         this.deg++;
 
-        const bullet = HitTest.getHitObjectByClassName ("Bullet");
+        const bullet = HitTest.getHitObjectByClassName (this, "Bullet");
         if (bullet) {
             // 弾にあたったらダメージを与え、EnemyManagerに通知して下さい。
             // bullet.damage
             this.setDamage (bullet.damage);
 
-            if(this.HP === 0) {
+            if(this.HP <= 0) {
                 this.dispatchEvent(new Event('death'));
-                this.diappear();
+                this.disappear();
             }
 
         }
     }
 
-    diappear() {
+    disappear() {
         this.destroy();
     }
     
