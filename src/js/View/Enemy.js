@@ -44,15 +44,15 @@ export default class Enemy extends UnitBase {
             }
 
         }    
-    } 
+    }
 
     disappear() {
         this.destroy();                    
     }
 
     stopBullet() {
-        clearInterval(this.nId);
-        this.bullet.death();
+        clearInterval(this.nId);    
+        
     }
     
     /**

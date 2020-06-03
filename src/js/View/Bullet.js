@@ -55,11 +55,6 @@ export default class Bullet extends CommonBase {
         // canvasの外に出てしまったら、destroy()するよう組んで下さい。
     }
 
-    // bullet消す処理
-    death() {
-        this.destroy();
-    }
-
     /**
      * 弾の描画
      * @param {ctx} context 
