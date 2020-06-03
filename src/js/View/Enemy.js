@@ -33,8 +33,21 @@ export default class Enemy extends UnitBase {
         if (bullet) {
             // 弾にあたったらダメージを与え、EnemyManagerに通知して下さい。
             // bullet.damage
+            this.setDamage (bullet.damage);
+
+            if(this.HP === 0) {
+                this.dispatchEvent(new Event('death'));
+                this.diappear();
+            }
+
         }
     }
+
+    diappear() {
+        this.destroy();
+    }
+    
+
     /**
      * 描画
      * @param {context} context 

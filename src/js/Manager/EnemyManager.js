@@ -18,6 +18,7 @@ export default class EnemyManager extends CommonBase {
                 // this.enemysListから死んだenemy を削除
                 this.enemysList = this.enemysList.filter(ene => ene != enemy);
             });
+            
         });
     }
     
