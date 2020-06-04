@@ -1,7 +1,6 @@
 import Player from "js/View/Player";
 import UI from "js/View/UI";
 import EnemyManager from "js/Manager/EnemyManager";
-import Enemy from "js/View/Enemy";
 // import CommonBase from "js/Common/CommonBase";
 
 /**
@@ -29,9 +28,7 @@ export default class MainManager {
         //制御してください。
         this.enemyManager = new EnemyManager ();
 
-        // 敵クラス
-        // 弾に当たった時のスコア通知を受け取る
-        this.enemy = new Enemy ();
+        // 弾に当たった時のスコア通知をenemyManagerから受け取る
         this.enemyManager.addEventListener('addScore', () => {
             this.ui.setScore(this.enemy.crashScore);
         });
