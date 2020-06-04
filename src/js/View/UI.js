@@ -12,6 +12,14 @@ export default class UI extends CommonBase {
         super ();
         this.score = 0;
         this.isGameOver = false;
+
+        // 攻撃力
+        this.power = 10;
+    }
+
+    // スコアを更新
+    getScore () {
+        this.score += this.power;
     }
 
     /**

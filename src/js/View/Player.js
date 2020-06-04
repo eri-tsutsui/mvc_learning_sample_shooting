@@ -1,6 +1,7 @@
 import UnitBase from "js/View/UnitBase";
 import HitTest from "js/Util/HitTest";
 import Bullet from "js/View/Bullet"; // bulletをnewするために事前にimport
+import UI from "js/View/UI";  // UIをnewするために事前にimport
 
 /**
  * 自機クラス
@@ -24,6 +25,10 @@ export default class Player extends UnitBase {
         // キー操作
         window.addEventListener('keyup', (e) => this.keyup(e));
         window.addEventListener('keydown', (e) => this.keydown(e));
+
+        // スコア
+        this.ui = new UI ();
+
     }
 
     keyup (e) {
@@ -76,10 +81,16 @@ export default class Player extends UnitBase {
         if (this.throwBullet === true) {
             const bullet = new Bullet (this.x + 50, this.y);
             bullet.setSpeed(7);
-            this.throwBullet = false;
+            this.throwBullet = false; 
+        }
+
+        // 敵に弾を当てた時スコアをゲット
+        const attack = HitTest.getHitObjectByClassName("Bullet", this);
+        if(attack) {
+            this.ui.getScore();
         }
  
-        // 敵の弾に当たったらダメージを受けるようにして下さい。
+         // 敵の弾に当たったらダメージを受けるようにして下さい。
         const bullet = HitTest.getHitObjectByClassName(this, "Bullet");
         if(bullet) {
             // ダメージを与えて下さい。↓コメントアウトを外していただくですがw
@@ -94,6 +105,7 @@ export default class Player extends UnitBase {
             }
            
         }
+
     }
 
     /**
