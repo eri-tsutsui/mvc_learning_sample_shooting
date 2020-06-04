@@ -43,7 +43,12 @@ export default class Enemy extends UnitBase {
                 this.stopBullet();
             }
 
+            // MainManagerにスコアを通知
+            this.dispatchEvent(new Event('currentHP'));
         }    
+
+
+
     }
 
     disappear() {

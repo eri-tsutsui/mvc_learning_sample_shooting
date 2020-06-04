@@ -1,6 +1,7 @@
 import Player from "js/View/Player";
 import UI from "js/View/UI";
 import EnemyManager from "js/Manager/EnemyManager";
+import Enemy from "js/View/Enemy";
 // import CommonBase from "js/Common/CommonBase";
 
 /**
@@ -27,6 +28,13 @@ export default class MainManager {
         //EnemyManagerクラスにて課題を確認し、色々な敵を作ったり、
         //制御してください。
         this.enemyManager = new EnemyManager ();
+
+        // 敵クラス
+        // 弾に当たった時のスコア通知を受け取る
+        this.enemy = new Enemy ();
+        this.enemy.addEventListener('currentHP', () => {
+            this.ui.setScore(10);
+        });
 
         //UIを表示させて下さい。UIクラスをインスタンス化させます。
         //はViewフォルダにあります
