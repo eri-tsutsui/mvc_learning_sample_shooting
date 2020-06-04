@@ -1,4 +1,5 @@
 import Enemy from "js/View/Enemy";
+import Enemy2 from "js/View/Enemy2";
 import CommonBase from "js/Common/CommonBase";
 /**
  * 敵ユニットを管理するマネージャークラス
@@ -11,6 +12,7 @@ export default class EnemyManager extends CommonBase {
         super ();
         this.enemysList = []; // Enemy管理配列
         this.enemysList.push (new Enemy()); //1体だけ生成
+        this.enemysList.push (new Enemy2()); //2体目
         this.enemysList.forEach(enemy => {
 
             // 死んだ時のリスナー
