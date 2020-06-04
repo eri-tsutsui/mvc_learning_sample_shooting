@@ -43,13 +43,15 @@ export default class UI extends CommonBase {
     draw (context) {
 
         //SCOREの表示
+        context.font = "bold 9px 'ゴシック'";
         context.fillStyle = "rgb(255, 169, 0)";
         context.fillText("SCORE : " + this.score, 10, 10);
 
         //GAME OVERの表示
         if(this.isGameOver === true) {
-            context.fillStyle = "rgb(0, 0, 0)";
-            context.fillText("GAME OVER", 10, 30);
+            // context.fillStyle = "rgb(0, 0, 0)";
+            context.font = "bold 30px 'ゴシック'";
+            context.fillText("GAME OVER", 200, 200);
         }
 
     }

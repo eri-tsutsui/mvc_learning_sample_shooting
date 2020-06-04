@@ -21,6 +21,7 @@ export default class Bullet extends CommonBase {
      * 
      * 
      * 
+     * 
      * @param {Number} value 
      */
     setSpeed (value) {

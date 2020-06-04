@@ -77,7 +77,6 @@ export default class Player extends UnitBase {
 
         // スペースキーを押すとBulletが発射されるようにして下さい。
         // Enemyクラスを参考にしてください。
-
         if (this.throwBullet === true) {
             const bullet = new Bullet (this.x + 50, this.y);
             bullet.setSpeed(7);
