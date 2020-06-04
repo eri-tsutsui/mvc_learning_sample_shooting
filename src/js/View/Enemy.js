@@ -43,11 +43,9 @@ export default class Enemy extends UnitBase {
                 this.stopBullet();
             }
 
-            // MainManagerにスコアを通知
-            this.dispatchEvent(new Event('currentHP'));
+            // MainManagerにスコアを通知（引数も渡したいのでCustomEventとすべき）
+            this.dispatchEvent(new CustomEvent('currentScore', {score: this.crashScore}));
         }    
-
-
 
     }
 
@@ -57,7 +55,6 @@ export default class Enemy extends UnitBase {
 
     stopBullet() {
         clearInterval(this.nId);    
-        
     }
     
     /**

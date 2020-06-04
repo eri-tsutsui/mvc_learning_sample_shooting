@@ -17,11 +17,6 @@ export default class UI extends CommonBase {
         this.power = 10;
     }
 
-    // スコアを更新
-    // getScore () {
-    //     this.score += this.power;
-    // }
-
     /**
      * スコア
      * @param {Number} value 
