@@ -32,7 +32,7 @@ export default class MainManager {
         // 敵クラス
         // 弾に当たった時のスコア通知を受け取る
         this.enemy = new Enemy ();
-        this.enemy.addEventListener('currentScore', () => {
+        this.enemyManager.addEventListener('addScore', () => {
             this.ui.setScore(this.enemy.crashScore);
         });
 

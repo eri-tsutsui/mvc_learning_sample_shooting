@@ -44,7 +44,7 @@ export default class Enemy extends UnitBase {
             }
 
             // MainManagerにスコアを通知（引数も渡したいのでCustomEventとすべき）
-            this.dispatchEvent(new CustomEvent('currentScore', {score: this.crashScore}));
+            this.dispatchEvent(new CustomEvent('addScore', {score: this.crashScore}));
         }    
 
     }
