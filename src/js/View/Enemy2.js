@@ -16,11 +16,14 @@ export default class Enemy2 extends Enemy {
         this.setWidth(40);
         this.setHeight(40);
         this.crashScore = 10;  
+        clearInterval(this.nId);
         this.nId = setInterval(() => {
             // 一定間隔で弾を発射
             const bullet = new Bullet (this.x - 40, this.y);
             bullet.setSpeed(-4);
         }, 400)
+
+
     }
     /**
      * EnterFrame.jsの中で

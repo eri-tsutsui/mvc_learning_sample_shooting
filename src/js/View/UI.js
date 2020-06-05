@@ -14,6 +14,10 @@ export default class UI extends CommonBase {
         this.isGameOver = false;
     }
 
+    addScore(value) {
+        this.score += value;
+    }
+
     /**
      * スコア
      * @param {Number} value 
