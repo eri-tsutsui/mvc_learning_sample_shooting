@@ -29,8 +29,8 @@ export default class MainManager {
         this.enemyManager = new EnemyManager ();
 
         // 弾に当たった時のスコア通知をenemyManagerから受け取る
-        this.enemyManager.addEventListener('addScore', () => {
-            this.ui.setScore(this.enemy.crashScore);
+        this.enemyManager.addEventListener('addScore', (e) => {
+            this.ui.setScore(e.detail);
         });
 
         //UIを表示させて下さい。UIクラスをインスタンス化させます。

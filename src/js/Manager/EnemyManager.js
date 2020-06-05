@@ -15,16 +15,29 @@ export default class EnemyManager extends CommonBase {
         this.enemysList.push (new Enemy2()); //2体目
         this.enemysList.forEach(enemy => {
 
-            // 死んだ時のリスナー
+            // Enemyが死んだ時のリスナー
+            // Enemy
             enemy.addEventListener ('death', (e) => {
                 // this.enemysListから死んだenemy を削除
                 this.enemysList = this.enemysList.filter(ene => ene != enemy);
             });
 
+            // Enemy2
+            // enemy2.addEventListener ('death', (e) => {
+            //     this.enemysList = this.enemysList.filter(ene => ene != enemy);
+            // });
+
             // 弾に当たった時のスコア通知をEnemyから受け取る
-            enemy.addEventListener('addScore', () => {
-                this.dispatchEvent(new CustomEvent('addScore', {score: this.crashScore}));
+            // さらにMainMnagaerに報告する
+            // Enemy
+            enemy.addEventListener('addScore', (e) => {
+                this.dispatchEvent(new CustomEvent('addScore', {detail: e.detail}));
             });
+
+            // Enemy2
+            // enemy2.addEventListener('addScore', (e) => {
+            //     this.dispatchEvent(new CustomEvent('addScore', {detail: e.detail}));
+            // });
             
         });
     }

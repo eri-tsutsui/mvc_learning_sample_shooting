@@ -44,8 +44,8 @@ export default class Enemy2 extends Enemy {
                 this.stopBullet();
             }
 
-            // MainManagerにスコアを通知（引数も渡したいのでCustomEventとすべき）
-            this.dispatchEvent(new CustomEvent('addScore', {score: this.crashScore}));
+            // EnemyManagerにまずスコアを通知（引数も渡したいのでCustomEventとすべき）
+            this.dispatchEvent(new CustomEvent('addScore', {detail: this.crashScore}));
         }    
 
     }
