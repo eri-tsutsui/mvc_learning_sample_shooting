@@ -9,6 +9,7 @@ import EnemyManager from "js/Manager/EnemyManager";
  */
 export default class MainManager {
     constructor (canvas){
+        
         // super ();
         this.canvas = canvas;
         console.log(canvas);

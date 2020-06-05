@@ -9,6 +9,7 @@ import Enemy from "./Enemy";
  */
 export default class Enemy2 extends Enemy {
     constructor () {
+        
         super ();
         this.x = 400;
         this.y = 200;
@@ -22,7 +23,6 @@ export default class Enemy2 extends Enemy {
             const bullet = new Bullet (this.x - 40, this.y);
             bullet.setSpeed(-4);
         }, 400)
-
 
     }
     /**
