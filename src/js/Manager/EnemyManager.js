@@ -14,6 +14,7 @@ export default class EnemyManager extends CommonBase {
         this.enemysList.push (new Enemy()); //1体だけ生成
         this.enemysList.push (new Enemy2()); //2体目
 
+        // Enemyを自動で5体生産
         this.production = setInterval(() => {
             this.enemysList.push (new Enemy());
         }, 4000);
@@ -21,7 +22,6 @@ export default class EnemyManager extends CommonBase {
         this.enemysList.forEach(enemy => {
 
             // Enemyが死んだ時のリスナー
-            // Enemy
             enemy.addEventListener ('death', (e) => {
                 // this.enemysListから死んだenemy を削除
                 this.enemysList = this.enemysList.filter(ene => ene != enemy);
@@ -29,7 +29,6 @@ export default class EnemyManager extends CommonBase {
 
             // 弾に当たった時のスコア通知をEnemyから受け取る
             // さらにMainMnagaerに報告する
-            // Enemy
             enemy.addEventListener('addScore', (e) => {
                 this.dispatchEvent(new CustomEvent('addScore', {detail: e.detail}));
             });
@@ -46,7 +45,7 @@ export default class EnemyManager extends CommonBase {
     stopProduction() {
         clearInterval(this.production, 20000);
     }
-        
+
     /**
      * EnterFrame.jsの中で
      * requestAnimationFrameから自動的にcallされ続けます。
