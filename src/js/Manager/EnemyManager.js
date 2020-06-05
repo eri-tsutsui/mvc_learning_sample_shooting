@@ -18,6 +18,8 @@ export default class EnemyManager extends CommonBase {
         this.production = setInterval(() => {
             this.enemysList.push (new Enemy());
         }, 4000);
+        
+        this.stopProduction();
 
         this.enemysList.forEach(enemy => {
 
@@ -35,10 +37,6 @@ export default class EnemyManager extends CommonBase {
 
         });
 
-    }
-
-    update() {
-         this.stopProduction();
     }
 
     // 20000秒で5体生産
