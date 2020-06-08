@@ -1,5 +1,6 @@
 import Enemy from "js/View/Enemy";
 import Enemy2 from "js/View/Enemy2";
+import Enemy3 from "js/View/Enemy3";
 import CommonBase from "js/Common/CommonBase";
 /**
  * 敵ユニットを管理するマネージャークラス
@@ -24,6 +25,8 @@ export default class EnemyManager extends CommonBase {
         this.enemysList.forEach(enemy => {
             this.setListener(enemy);
         });
+
+        this.produceBoss();
     }
 
     setListener(enemy) {
@@ -47,8 +50,13 @@ export default class EnemyManager extends CommonBase {
         }, 20000);
     }
 
-
-
+    // ボスを出現させる
+    produceBoss () {
+        if(this.enemysList.length == 0) {
+            this.enemysList.push (new Enemy3()); 
+        }
+    }
+    
     /**
      * EnterFrame.jsの中で
      * requestAnimationFrameから自動的にcallされ続けます。
