@@ -16,7 +16,7 @@ export default class Enemy3 extends Enemy {
         this.setHP(30);
         this.setWidth(40);
         this.setHeight(40);
-        this.crashScore = 10;  
+        this.crashScore = 30;  
         clearInterval(this.nId);
         this.nId = setInterval(() => {
             // 一定間隔で弾を発射
@@ -48,7 +48,7 @@ export default class Enemy3 extends Enemy {
             }
 
             // EnemyManagerにまずスコアを通知（引数も渡したいのでCustomEventとすべき）
-            this.dispatchEvent(new CustomEvent('addScore', {detail: this.crashScore}));
+            this.dispatchEvent(new CustomEvent('addBossScore', {detail: this.crashScore}));
         }    
 
     }

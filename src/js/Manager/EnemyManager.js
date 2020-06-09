@@ -27,6 +27,10 @@ export default class EnemyManager extends CommonBase {
         this.enemysList.forEach(enemy => {
             this.setListener(enemy);
         });
+
+        enemy.addEventListener('addBossScore', (e) => {
+            this.dispatchEvent(new CustomEvent('addBossScore', {detail: e.detail}));
+        });
         
     }
 
