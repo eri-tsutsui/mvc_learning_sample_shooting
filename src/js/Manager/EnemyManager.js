@@ -12,15 +12,15 @@ export default class EnemyManager extends CommonBase {
     constructor (){
         super ();
         this.enemysList = []; // Enemy管理配列
-        this.enemysList.push (new Enemy()); 
-        this.enemysList.push (new Enemy2()); //2体目
+        this.enemysList.push (new Enemy()); // 赤
+        this.enemysList.push (new Enemy2()); // 紫
 
         this.deathCount = 0;
 
         // Enemyを一定間隔で5体生産
         this.production = setInterval(() => {
             const enemy = new Enemy();
-            this.enemysList.push (new Enemy());
+            this.enemysList.push (new Enemy()); // 赤
             this.setListener(enemy);
         }, 4000);
         this.stopProduction();
@@ -47,8 +47,6 @@ export default class EnemyManager extends CommonBase {
         // さらにMainMnagaerに報告する
         enemy.addEventListener('addScore', (e) => {
             this.dispatchEvent(new CustomEvent('addScore', {detail: e.detail}));
-
-
         });
     }
 
