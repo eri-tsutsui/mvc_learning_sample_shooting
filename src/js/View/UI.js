@@ -14,6 +14,7 @@ export default class UI extends CommonBase {
         this.isGameOver = false;
     }
 
+    // スコアを増やす
     addScore(value) {
         this.score += value;
     }

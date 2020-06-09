@@ -32,7 +32,7 @@ export default class Enemy3 extends Enemy {
     update (){   
         // 動きはoverrideして下さい。↓のサンプルは上下運動
         this.deg = this.deg || 0;
-        this.y = Math.cos(this.deg * (Math.PI / 180)) * 0.8 + this.y;
+        this.y = Math.cos(this.deg * (Math.PI / 180)) * 5 + this.y;
         this.deg++;
 
         const bullet = HitTest.getHitObjectByClassName (this, "Bullet");

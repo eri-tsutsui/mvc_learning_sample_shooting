@@ -33,6 +33,11 @@ export default class MainManager {
         this.enemyManager.addEventListener('addScore', (e) => {
             // this.ui.setScore(e.detail);
             this.ui.addScore(e.detail);
+
+            if(this.ui.score == 70) {
+                this.dispatchEvent(new Event('fullScore'));
+            }
+
         });
 
         //UIを表示させて下さい。UIクラスをインスタンス化させます。
