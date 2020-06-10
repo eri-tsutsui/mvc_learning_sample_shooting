@@ -12,26 +12,24 @@ export default class EnemyManager extends CommonBase {
     constructor (){
         super ();
         this.enemysList = []; // Enemy管理配列
-        this.enemysList.push (new Enemy()); // 赤
-        this.enemysList.push (new Enemy2()); // 紫
-
         this.deathCount = 0;
 
-        // Enemyを一定間隔で5体生産
+        // Enemy(赤)を一定間隔で5体生産
         this.production = setInterval(() => {
             const enemy = new Enemy();
-            this.enemysList.push (new Enemy()); // 赤
             this.setListener(enemy);
         }, 4000);
+
         this.stopProduction();
+
         this.enemysList.forEach(enemy => {
             this.setListener(enemy);
         });
 
-        enemy.addEventListener('addBossScore', (e) => {
-            this.dispatchEvent(new CustomEvent('addBossScore', {detail: e.detail}));
-        });
-        
+        // Enemy2(黒)
+        const enemy2 = new Enemy2();
+        this.setListener(enemy2);
+
     }
 
     setListener(enemy) {
@@ -64,7 +62,8 @@ export default class EnemyManager extends CommonBase {
     // ボスを出現させる
     produceBoss () {
         if(this.deathCount == 7) {
-            this.enemysList.push (new Enemy3()); 
+            const enemy3 = new Enemy3();
+            this.setListener(enemy3);
         }
     }
     

@@ -48,7 +48,7 @@ export default class Enemy3 extends Enemy {
             }
 
             // EnemyManagerにまずスコアを通知（引数も渡したいのでCustomEventとすべき）
-            this.dispatchEvent(new CustomEvent('addBossScore', {detail: this.crashScore}));
+            this.dispatchEvent(new CustomEvent('addScore', {detail: this.crashScore}));
         }    
 
     }
