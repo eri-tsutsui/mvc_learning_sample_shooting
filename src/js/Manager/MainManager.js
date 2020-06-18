@@ -20,7 +20,6 @@ export default class MainManager {
 
         //死亡した時
         this.player.addEventListener('currentHP', () => {
-            // console.log('死亡');
             this.ui.showGameOver();
         });
 
@@ -31,14 +30,18 @@ export default class MainManager {
 
         // 弾に当たった時のスコア通知をenemyManagerから受け取る
         this.enemyManager.addEventListener('addScore', (e) => {
-            // this.ui.setScore(e.detail);
             this.ui.addScore(e.detail);
         });
 
-        this.enemyManager.addEventListener('addBossScore', (e) => {
-            // this.ui.setScore(e.detail);
-            this.ui.addScore(e.detail);
+        // this.enemyManager.addEventListener('addBossScore', (e) => {
+        //     this.ui.addScore(e.detail);
+        // });
+
+        // ゲームをクリアしたとき
+        this.enemyManager.addEventListener('clearGame', (e) => {
+            this.ui.showClearGame();
         });
+        
 
         //UIを表示させて下さい。UIクラスをインスタンス化させます。
         //はViewフォルダにあります

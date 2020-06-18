@@ -43,6 +43,11 @@ export default class EnemyManager extends CommonBase {
 
             // 全てのエネミーが死んだという報告を受けたら実行するのでコードはここ
             this.produceBoss();
+
+            if(this.deathCount == 7) {
+                this.dispatchEvent(new Event('clearGame'));
+            }
+
         });
 
         // 弾に当たった時のスコア通知をEnemyから受け取る
@@ -50,6 +55,9 @@ export default class EnemyManager extends CommonBase {
         enemy.addEventListener('addScore', (e) => {
             this.dispatchEvent(new CustomEvent('addScore', {detail: e.detail}));
         });
+
+        
+
     }
 
     // 20000秒で5体生産
@@ -61,7 +69,7 @@ export default class EnemyManager extends CommonBase {
 
     // ボスを出現させる
     produceBoss () {
-        if(this.deathCount == 7) {
+        if(this.deathCount == 6) {
             const enemy3 = new Enemy3();
             this.setListener(enemy3);
         }
