@@ -18,6 +18,10 @@ export default class Bullet extends CommonBase {
     }
     /**
      * スピード
+     * 
+     * 
+     * 
+     * 
      * @param {Number} value 
      */
     setSpeed (value) {
@@ -51,6 +55,7 @@ export default class Bullet extends CommonBase {
 
         // canvasの外に出てしまったら、destroy()するよう組んで下さい。
     }
+
     /**
      * 弾の描画
      * @param {ctx} context 

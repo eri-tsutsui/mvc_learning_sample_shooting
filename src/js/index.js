@@ -6,8 +6,8 @@ document.body.appendChild(canvas);
 
 // Canvasを画面いっぱいに表示する
 function onResize() {
-    canvas.width = innerWidth * devicePixelRatio;
-    canvas.height = innerHeight * devicePixelRatio;
+    canvas.width = 900;
+    canvas.height = 600;
 }
 window.addEventListener('resize', onResize);
 onResize();
@@ -18,3 +18,4 @@ EnterFrame.startAnimationFrame (canvas);
 /**
  * entory js　特にこれをいじる必要はありません。
  */
+
